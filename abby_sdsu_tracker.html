@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abby's Road to SDSU · Fall 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --scarlet: #A6192E;
+    --scarlet-deep: #7A1322;
+    --gold: #C8A35F;
+    --cream: #F5EFE4;
+    --cream-warm: #EFE6D4;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4441;
+    --line: #2B1A1C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(166,25,46,0.06), transparent 40%),
+      radial-gradient(circle at 88% 92%, rgba(200,163,95,0.08), transparent 45%);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+  }
+  .frame {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--cream-warm);
+    border: 1.5px solid var(--line);
+    box-shadow: 8px 8px 0 var(--ink);
+    position: relative;
+  }
+
+  /* ─── HEADER ─── */
+  .masthead {
+    background: var(--scarlet);
+    color: var(--cream);
+    padding: 28px 28px 24px;
+    border-bottom: 1.5px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: var(--scarlet-deep);
+    transform: rotate(45deg);
+    opacity: 0.5;
+  }
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(34px, 7vw, 52px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    position: relative;
+    z-index: 1;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .subhead {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 12px;
+    opacity: 0.92;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(245, 239, 228, 0.25);
+    padding-top: 12px;
+    max-width: 90%;
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-wrap {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .progress-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .progress-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(245, 239, 228, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+  .progress-count {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 28px;
+    border-bottom: 1px solid rgba(43, 26, 28, 0.15);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .marker {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--scarlet);
+    flex-shrink: 0;
+  }
+  .section-meta { flex: 1; }
+  .section-when {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--scarlet);
+  }
+
+  /* ─── URGENT BADGE ─── */
+  .urgent .marker { color: var(--scarlet); }
+  .urgent .section-head {
+    background: var(--scarlet);
+    color: var(--cream);
+    padding: 16px 18px;
+    margin: -8px -8px 18px;
+    border-bottom: none;
+    border: 1.5px solid var(--line);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .urgent .marker, .urgent .section-when, .urgent .section-title {
+    color: var(--cream);
+  }
+  .urgent .section-title em { color: var(--gold); }
+  .urgent .section-when { color: var(--gold); }
+
+  /* ─── TASKS ─── */
+  .task {
+    display: flex;
+    gap: 14px;
+    padding: 12px 8px;
+    border-bottom: 1px dashed rgba(43, 26, 28, 0.18);
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .task:last-child { border-bottom: none; }
+  .task:hover { background: rgba(166, 25, 46, 0.04); }
+  .task input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--ink);
+    background: var(--cream);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  .task input[type="checkbox"]:checked {
+    background: var(--scarlet);
+    border-color: var(--scarlet);
+  }
+  .task input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--cream);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .task-body { flex: 1; }
+  .task-title {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .task-detail {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .task.done .task-title {
+    text-decoration: line-through;
+    color: var(--ink-soft);
+  }
+  .task-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    background: var(--gold);
+    color: var(--ink);
+    margin-left: 6px;
+    vertical-align: 2px;
+  }
+  .task-tag.optional {
+    background: transparent;
+    border: 1px solid var(--ink-soft);
+    color: var(--ink-soft);
+  }
+
+  /* ─── DATE PILL ─── */
+  .date-pill {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3px 8px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  /* ─── FOOTER / CONTACT ─── */
+  .colophon {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 28px;
+    border-top: 1.5px solid var(--line);
+  }
+  .colophon-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .contact-grid {
+    display: grid;
+    gap: 14px;
+  }
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(245, 239, 228, 0.2);
+  }
+  .contact:last-child { border-bottom: none; }
+  .contact-role {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .contact-name {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .contact-detail {
+    font-size: 13px;
+    color: rgba(245, 239, 228, 0.75);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .signoff {
+    text-align: center;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(245, 239, 228, 0.2);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 520px) {
+    body { padding: 12px 8px 60px; }
+    .frame { box-shadow: 4px 4px 0 var(--ink); }
+    .masthead, .section, .colophon { padding: 22px 18px; }
+    .progress-wrap { padding: 12px 18px; }
+    .marker { font-size: 32px; }
+    .section-title { font-size: 20px; }
+    .urgent .section-head { margin: -4px -4px 14px; padding: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="eyebrow">Class of 2030 · Future Aztec</div>
+    <h1>Abby's Road<br><em>to SDSU</em></h1>
+    <p class="subhead">A field guide to enrollment — every deadline, every form, every box to tick between now and your first day on the Mesa.</p>
+  </header>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <span class="progress-label">Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="bar"></div></div>
+    <span class="progress-count" id="count">0 / 0</span>
+  </div>
+
+  <!-- SECTION 01: URGENT -->
+  <section class="section urgent">
+    <div class="section-head">
+      <div class="marker">01</div>
+      <div class="section-meta">
+        <div class="section-when">By <strong>Friday, May 1</strong></div>
+        <h2 class="section-title">Right <em>now</em></h2>
+      </div>
+    </div>
+
+    <label class="task"><input type="checkbox" data-id="t01">
+      <div class="task-body">
+        <div class="task-title">Accept offer of admission + pay enrollment deposit</div>
+        <div class="task-detail">This is the Intent to Enroll. Unlocks everything else, including the Housing Portal (allow 24 hrs to update).</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t02">
+      <div class="task-body">
+        <div class="task-title">Request all official transcripts → TranscriptsForSDSU@sdsu.edu</div>
+        <div class="task-detail">High school + any dual-enrollment college transcripts. As long as it's <em>requested</em> by 5/1, you're good. Transcripts can take up to 2 weeks to process. Confirm Xello/Parchment status.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t03">
+      <div class="task-body">
+        <div class="task-title">Send AP scores (3 or higher) to SDSU</div>
+        <div class="task-detail">Through College Board. SDSU recommends sending any score of 3+.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t04">
+      <div class="task-body">
+        <div class="task-title">Complete Housing License Agreement — Phase I</div>
+        <div class="task-detail">Activate SDSUid first, then Intent to Enroll payment, then 24-hour wait, then Housing Portal.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t05">
+      <div class="task-body">
+        <div class="task-title">Submit FERPA / Student Authorization Form<span class="task-tag optional">Optional</span></div>
+        <div class="task-detail">Lets SDSU discuss your records with your parents. Recommended — easier to set up now than later.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t06">
+      <div class="task-body">
+        <div class="task-title">Apply for Aztec Scholarships<span class="task-tag optional">Optional</span></div>
+        <div class="task-detail">Limited and competitive ($1,500–$4,000), but worth the shot. Notifications come mid-October.</div>
+      </div>
+    </label>
+  </section>
+
+  <!-- SECTION 02: MAY 2-15 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="marker">02</div>
+      <div class="section-meta">
+        <div class="section-when"><span class="date-pill">May 2 – 15</span> Housing Phase II</div>
+        <h2 class="section-title">Pick your <em>room, your meal plan, your people</em></h2>
+      </div>
+    </div>
+
+    <label class="task"><input type="checkbox" data-id="t07">
+      <div class="task-body">
+        <div class="task-title">Select meal plan — Flex 5</div>
+        <div class="task-detail">Already decided. Required for first-year on-campus students.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t08">
+      <div class="task-body">
+        <div class="task-title">Choose at least two room type preferences</div>
+        <div class="task-detail">Triple expected (most common for first-years). List a backup just in case.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t09">
+      <div class="task-body">
+        <div class="task-title">Indicate housing-over-break preferences</div>
+        <div class="task-detail">Some buildings close over Thanksgiving / winter / spring breaks. Choose a building group that matches your plans.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t10">
+      <div class="task-body">
+        <div class="task-title">Pick a learning community<span class="task-tag optional">Optional</span></div>
+        <div class="task-detail">Based on academic or lifestyle interests. Placement isn't guaranteed.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t11">
+      <div class="task-body">
+        <div class="task-title">Form a roommate group or answer lifestyle questions<span class="task-tag optional">Optional</span></div>
+        <div class="task-detail">Groups of 2 or 3. Everyone in the group must answer the same room type and learning community — do Phase II together. Skip and you'll be matched on lifestyle answers.</div>
+      </div>
+    </label>
+  </section>
+
+  <!-- SECTION 03: SUMMER COURSE -->
+  <section class="section">
+    <div class="section-head">
+      <div class="marker">03</div>
+      <div class="section-meta">
+        <div class="section-when"><span class="date-pill">May 1 → mid-May</span> Summer Macroeconomics</div>
+        <h2 class="section-title">One online class, <em>over the summer</em></h2>
+      </div>
+    </div>
+
+    <label class="task"><input type="checkbox" data-id="t_pcc1">
+      <div class="task-body">
+        <div class="task-title">May 1 — check PCC's summer 2026 schedule for online Macroeconomics<span class="task-tag">First Choice</span></div>
+        <div class="task-detail">Portland CC's class list goes live May 1. Look for an online async section of Principles of Macroeconomics (~4 quarter credits, ~$500 with Oregon in-state). Cheapest option by a mile if it's offered.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t_pcc2">
+      <div class="task-body">
+        <div class="task-title">Verify PCC course transfers to SDSU</div>
+        <div class="task-detail">Two checks before you click enroll: (1) run it through Transferology, (2) email Jason Tan (jtan@sdsu.edu) with the course number and ask if it satisfies SDSU's macro requirement for IB.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t_pcc3">
+      <div class="task-body">
+        <div class="task-title">Decide & register by the second week of May</div>
+        <div class="task-detail">If PCC works → enroll there. If PCC's offerings or transfer don't pan out, drop to backups below. Don't drag this past mid-May — sections fill.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t_backup1">
+      <div class="task-body">
+        <div class="task-title">Backup A — SDCCD ECON 120 (if PCC falls through)<span class="task-tag optional">If Needed</span></div>
+        <div class="task-detail">San Diego Community College District. ~$1,264 for 3 units OOS, online async. ASSIST.org already confirms it transfers to SDSU. Browse sections at sdccd.edu/students/class-search — pick by schedule and instructor reviews.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t_backup2">
+      <div class="task-body">
+        <div class="task-title">Backup B — Saddleback ECON 2 (last resort)<span class="task-tag optional">If Needed</span></div>
+        <div class="task-detail">~$1,510 for 3 units OOS, online async. ASSIST-confirmed and Jason Tan has previously endorsed it. Most expensive of the three, but transfer is rock-solid.</div>
+      </div>
+    </label>
+  </section>
+
+  <!-- SECTION 04: MID-MAY -->
+  <section class="section">
+    <div class="section-head">
+      <div class="marker">04</div>
+      <div class="section-meta">
+        <div class="section-when"><span class="date-pill">May 7 · 10am</span> Orientation Opens</div>
+        <h2 class="section-title">Lock in <em>orientation</em></h2>
+      </div>
+    </div>
+
+    <label class="task"><input type="checkbox" data-id="t12">
+      <div class="task-body">
+        <div class="task-title">Register for New Student Orientation (May 7, 10am sharp)</div>
+        <div class="task-detail">Held on campus in July. Pick a date where Fowler / IB is represented. Spots fill — set an alarm for 10am.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t13">
+      <div class="task-body">
+        <div class="task-title">Submit Residential Success Pathway Form<span class="task-tag">May 18</span></div>
+        <div class="task-detail">Shares your major with Residential Education so they can pre-enroll you in courses that count toward your degree.</div>
+      </div>
+    </label>
+  </section>
+
+  <!-- SECTION 05: JULY -->
+  <section class="section">
+    <div class="section-head">
+      <div class="marker">05</div>
+      <div class="section-meta">
+        <div class="section-when"><span class="date-pill">July</span> Final Stretch</div>
+        <h2 class="section-title">Last forms <em>before move-in</em></h2>
+      </div>
+    </div>
+
+    <label class="task"><input type="checkbox" data-id="t14">
+      <div class="task-body">
+        <div class="task-title">Submit final transcripts + AP/IB scores</div>
+        <div class="task-detail">One week before your orientation date — and no later than <strong>July 15</strong>.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t15">
+      <div class="task-body">
+        <div class="task-title">Upload immunization records<span class="task-tag">July 18</span></div>
+        <div class="task-detail">Through the HealtheConnect portal. Plan ahead for any shots you still need.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t16">
+      <div class="task-body">
+        <div class="task-title">Attend New Student Orientation (on campus)</div>
+        <div class="task-detail">Specific date confirmed when you register on May 7.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t17">
+      <div class="task-body">
+        <div class="task-title">Summer Send-Off — Portland or Seattle<span class="task-tag optional">Optional</span></div>
+        <div class="task-detail">Late July / early August. Meet other PNW Aztecs and alums before you leave. Sarah will share details.</div>
+      </div>
+    </label>
+  </section>
+
+  <!-- SECTION 06: AUGUST -->
+  <section class="section">
+    <div class="section-head">
+      <div class="marker">06</div>
+      <div class="section-meta">
+        <div class="section-when"><span class="date-pill">August</span> The Mesa</div>
+        <h2 class="section-title">You're <em>here</em></h2>
+      </div>
+    </div>
+
+    <label class="task"><input type="checkbox" data-id="t18">
+      <div class="task-body">
+        <div class="task-title">Move in<span class="task-tag">Aug 19–21</span></div>
+        <div class="task-detail">Wait for your confirmed move-in date by email before booking flights.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t19">
+      <div class="task-body">
+        <div class="task-title">Weeks of Welcome<span class="task-tag">Aug 19 – Sep 5</span></div>
+        <div class="task-detail">Show up to things. This is how you find your people.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t20">
+      <div class="task-body">
+        <div class="task-title">New Student & Family Convocation<span class="task-tag">Aug 22</span></div>
+        <div class="task-detail">Bring the family.</div>
+      </div>
+    </label>
+
+    <label class="task"><input type="checkbox" data-id="t21">
+      <div class="task-body">
+        <div class="task-title">First day of fall classes<span class="task-tag">Aug 24</span></div>
+        <div class="task-detail">It's real now.</div>
+      </div>
+    </label>
+  </section>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colophon-title">When you need a real human —</div>
+
+    <div class="contact-grid">
+      <div class="contact">
+        <span class="contact-role">Admissions Counselor</span>
+        <span class="contact-name">Sarah Faulk</span>
+        <span class="contact-detail">sfaulk@sdsu.edu · 619-323-7972 (call/text)</span>
+      </div>
+      <div class="contact">
+        <span class="contact-role">IB Academic Advisor</span>
+        <span class="contact-name">Jason Tan</span>
+        <span class="contact-detail">jtan@sdsu.edu · summer course approvals</span>
+      </div>
+      <div class="contact">
+        <span class="contact-role">Housing</span>
+        <span class="contact-name">Office of Housing Administration</span>
+        <span class="contact-detail">oha@sdsu.edu · virtual help desk</span>
+      </div>
+      <div class="contact">
+        <span class="contact-role">Orientation</span>
+        <span class="contact-name">New Student Programs</span>
+        <span class="contact-detail">orientation@sdsu.edu</span>
+      </div>
+      <div class="contact">
+        <span class="contact-role">Financial</span>
+        <span class="contact-name">Cal Coast Student Financial Center</span>
+        <span class="contact-detail">FAFSA, loans, aid · virtual help desk (mornings = quietest)</span>
+      </div>
+    </div>
+
+    <div class="signoff">— Go Aztecs · Fall 2026 —</div>
+  </footer>
+
+</div>
+
+<script>
+  const checkboxes = document.querySelectorAll('input[type="checkbox"][data-id]');
+  const bar = document.getElementById('bar');
+  const count = document.getElementById('count');
+  const total = checkboxes.length;
+
+  // Detect environment: Claude artifact runtime vs. standalone browser
+  const hasArtifactStorage =
+    typeof window.storage !== 'undefined' && typeof window.storage.get === 'function';
+
+  async function readKey(key) {
+    if (hasArtifactStorage) {
+      try {
+        const result = await window.storage.get(key);
+        return result ? result.value : null;
+      } catch (e) { return null; }
+    }
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  async function writeKey(key, value) {
+    if (hasArtifactStorage) {
+      try { await window.storage.set(key, value); return; } catch (e) {}
+    }
+    try { localStorage.setItem(key, value); } catch (e) {
+      console.warn('No persistent storage available — progress will reset on reload.');
+    }
+  }
+
+  async function loadState() {
+    for (const cb of checkboxes) {
+      const value = await readKey('abby:' + cb.dataset.id);
+      if (value === 'true') {
+        cb.checked = true;
+        cb.closest('.task').classList.add('done');
+      }
+    }
+    updateProgress();
+  }
+
+  async function saveState(id, checked) {
+    await writeKey('abby:' + id, String(checked));
+  }
+
+  function updateProgress() {
+    const done = Array.from(checkboxes).filter(c => c.checked).length;
+    const pct = total ? (done / total) * 100 : 0;
+    bar.style.width = pct + '%';
+    count.textContent = done + ' / ' + total;
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.closest('.task').classList.toggle('done', cb.checked);
+      updateProgress();
+      saveState(cb.dataset.id, cb.checked);
+    });
+  });
+
+  // Works in both Claude's artifact runtime and standalone browsers
+  loadState();
+</script>
+</body>
+</html>
